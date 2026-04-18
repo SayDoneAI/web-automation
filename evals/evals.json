@@ -1,0 +1,23 @@
+{
+  "skill_name": "web-automation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我打开这个后台页面，抓出当前表格前 20 行的名字和状态",
+      "expected_output": "应该路由到 chrome-mcp-server，优先用 chrome_javascript 直接提取结构化数据；如果 ref 需要先定位，再用 read_page(filter=interactive) 辅助，而不是退回搜索层。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我截个当前页面的图，然后把页面上的登录按钮点一下",
+      "expected_output": "应该路由到 chrome-mcp-server，使用 screenshot + read_page(filter=interactive) + click_element；截图必须 savePng，不能走 base64。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "打开这个站点，录一下我提交表单时发出去的请求，再把响应贴出来",
+      "expected_output": "应该路由到 chrome-mcp-server，使用 chrome_network_capture(action=start/stop) 配合页面交互完成抓包，而不是只做文本抓取。",
+      "files": []
+    }
+  ]
+}
