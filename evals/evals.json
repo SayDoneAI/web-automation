@@ -18,6 +18,12 @@
       "prompt": "打开这个站点，录一下我提交表单时发出去的请求，再把响应贴出来",
       "expected_output": "应该路由到 chrome-mcp-server，使用 chrome_network_capture(action=start/stop) 配合页面交互完成抓包，而不是只做文本抓取。",
       "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "chrome-mcp-server 现在一直报 browser disconnected，你先恢复连接，再帮我点开页面上的导出按钮",
+      "expected_output": "应该先把问题判定为 chrome-mcp-server transport 层故障，优先尝试断开重连；重连后先用 get_windows_and_tabs 或轻量读取做最小探针，恢复后再继续点击，不应直接退回搜索层或把问题误判为站点故障。",
+      "files": []
     }
   ]
 }

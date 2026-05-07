@@ -155,6 +155,16 @@ OPT=$(ls ~/.claude/skills/jarvis/scripts/optimize-image.sh ~/.codex/skills/jarvi
 4. 多字段填写优先 `chrome_computer(action="fill_form")` 或批量填充
 5. 只有 ref 不稳定或布局怪时，才上坐标点击
 
+### 连接异常先断开重连
+
+`chrome-mcp-server` 出现 `server unavailable`、`browser disconnected`、`target closed` 这类 transport 错误时：
+
+1. 先别误判成站点坏了
+2. 不要原地重试同一复杂调用超过 2 次
+3. 先做一次断开重连
+4. 重连后先用 `get_windows_and_tabs`、`chrome_get_web_content(textContent=true)` 或 `chrome_read_page(filter="interactive")` 做最小探针
+5. 探针通过再继续；仍失败才降级到静态提取 / 搜索，必须依赖登录态或动态交互则明确报阻塞
+
 ### 常用操作速查
 
 ```text
